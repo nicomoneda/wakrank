@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stasis: 1
+  rank: 1
+  character: one
+  dungeon: one
+
+two:
+  stasis: 1
+  rank: 1
+  character: two
+  dungeon: two
