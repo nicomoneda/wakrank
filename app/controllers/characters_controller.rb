@@ -3,10 +3,20 @@ class CharactersController < ApplicationController
     
     def index
         @characters = Character.all
+        @recompenses = []
+        # afficher coffres d'un perso
+        @characters.each do |character|
+            sum = 0
+            all_ranking = Ranking.where(character: character)
+            all_ranking.each do |tamerelapute|
+                sum += tamerelapute.stasis
+            end
+            @recompenses << sum
+        end
     end
 
     def show        
-        @ranking = Ranking.new
+        
     end
 
     def new
@@ -23,6 +33,7 @@ class CharactersController < ApplicationController
     end
 
     def edit
+        
     end
 
     def update

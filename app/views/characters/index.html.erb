@@ -1,0 +1,10 @@
+<p>coucou, bienvenue dans l'index des persos</p>
+<% @characters.each do |character| %>
+    <p><%= character.name %></p>
+    <ul>
+        <li><%= character.level %></li>
+        <li><%= @recompense[character.index] %></li> 
+    </ul>
+
+<% end %>
+<p>Somme des récompenses : <%= @recompenses%></p>
