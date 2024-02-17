@@ -1,10 +1,15 @@
-<p>coucou, bienvenue dans l'index des persos</p>
-<% @characters.each do |character| %>
-    <p><%= character.name %></p>
-    <ul>
-        <li><%= character.level %></li>
-        <li><%= @recompense[character.index] %></li> 
-    </ul>
-
-<% end %>
-<p>Somme des récompenses : <%= @recompenses%></p>
+<h1>Coucou, bienvenue dans l'index des persos</h1>
+<table>
+    <tr>
+      <th>Nom du perso</th>
+      <th>Niveau</th>
+      <th>Total coffres</th>
+    </tr>
+    <% @characters.each_with_index do |character, index| %>
+    <tr>
+      <td><%= character.name %></td>
+      <td><%= character.level %></td>
+      <td><%= @recompenses[index] %></td>
+    </tr>
+    <% end %>
+</table>

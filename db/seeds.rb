@@ -28,7 +28,6 @@ puts "Create characters"
 Character.create(name: "Suedama", level: 153)
 Character.create(name: "Nico Moneda", level: 185)
 Character.create(name: "José Ynequaine", level: 154)
-Character.create(name: "")
  
 puts "Create rankings"
 Ranking.create(stasis: 4, character: Character.where(name: "Suedama").first, dungeon: Dungeon.where(name: "Mère Michou").first)
