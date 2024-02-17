@@ -7,14 +7,14 @@ class RankingsController < ApplicationController
 
     def create
         @ranking = Ranking.new(ranking_params)
-        @dungeon = Dungeon.find(params[:dungeon_id])
+        @dungeon = Dungeon.find(params[:dungeon_id]) # Pas péren vu qu'id récup dans l'url
         @ranking.dungeon = @dungeon
-        @ranking.character = Character.find(params[:character_id])
+        @ranking.character = Character.find(params[:character_id]) # Me gène ce truc là, choppe l'id à partir de l'url
 
         if @ranking.save
             # Redirect to character_list_dungeon
         else
-            render 'characters/show'
+            # render 'characters/show'
         end
     end
 
