@@ -1,0 +1,16 @@
+<h1><%= @dungeon.name %></h1>
+<h3>Total des coffres :  <%= @total_coffres %></h3>
+<h3>Classement</h3>
+<table>
+    <tr>
+      <th>Nom du perso</th>
+      <th>Stasis</th>
+    </tr>
+    <% @ranking_dungeon.each do |rank| %>
+    <tr>
+        <td><%= rank.character.name %></td>
+        <td><%= rank.stasis %></td>
+    </tr>
+    <% end %>
+
+</table>
