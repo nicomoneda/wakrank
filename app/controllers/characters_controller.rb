@@ -26,7 +26,7 @@ class CharactersController < ApplicationController
     def create
         @character = Character.new(characters_params)
         if @character.save
-            # Redirect to characters list -> TBD in routbe.rb (redirect_to characters_list)
+            redirect_to characters_path
         else
             render :new
         end

@@ -1,5 +1,9 @@
-<div class="navbar">
-  <%= link_to "Home", root_path %>
-  <%= link_to "Persos", characters_path %>
-  <%= link_to "Donjons", dungeons_path %>
+<div class="container">
+  <header class="d-flex justify-content-center py-3 border-bottom">
+    <ul class="nav nav-pills">
+      <li class="nav-item"><%= link_to "Home", root_path, :class => class_names('nav-link', { active: current_page?(root_path) }) %></li>
+      <li class="nav-item"><%= link_to "Persos", characters_path, :class => class_names('nav-link', { active: current_page?(characters_path) }) %></li>
+      <li class="nav-item"><%= link_to "Donjons", dungeons_path, :class => class_names('nav-link', { active: current_page?(dungeons_path) }) %></li>
+    </ul>
+  </header>
 </div>
