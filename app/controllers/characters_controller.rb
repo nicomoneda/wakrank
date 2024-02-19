@@ -7,9 +7,9 @@ class CharactersController < ApplicationController
         # afficher coffres d'un perso
         @characters.each do |character|
             sum = 0
-            all_ranking = Ranking.where(character: character)
-            all_ranking.each do |tamerelapute|
-                sum += tamerelapute.stasis
+            all_rankings = Ranking.where(character: character)
+            all_rankings.each do |ranking|
+                sum += ranking.stasis
             end
             @recompenses << sum
         end
