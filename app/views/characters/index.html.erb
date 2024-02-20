@@ -12,8 +12,9 @@
         <td><%= character.name %></td>
         <td><%= character.level %></td>
         <td><%= @recompenses[index] %></td>
+        <td><%= link_to "Editer", edit_character_path(character), data: { turbo_frame: 'modal' } %></td>
       </tr>
       <% end %>
   </table>
 </div>
-<%= link_to "+ Nouveau personnage", new_character_path %>
+<%= link_to "Nouveau personnage", new_character_path, data: { turbo_frame: 'modal' } %>

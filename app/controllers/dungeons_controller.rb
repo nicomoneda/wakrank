@@ -5,11 +5,14 @@ class DungeonsController < ApplicationController
         @dungeons.each do |dungeon|
             sum = 0
             all_ranking = Ranking.where(dungeon: dungeon)
+            puts all_ranking
             all_ranking.each do |rank|
+                puts rank
                 sum += rank.stasis
             end
             @coffres << sum
         end
+        puts "Tableau coffres = #{@coffres}"
     end
 
     def show
