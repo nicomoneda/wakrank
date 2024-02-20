@@ -12,7 +12,7 @@ Dj4s    =  Kind.create(name: "Donjon 4 salles")
 Dj3j    =  Kind.create(name: "Donjon 3 Joueurs")
 Djbd    =  Kind.create(name: "Brèche Dimensionnelle")
 Djbdu   =  Kind.create(name: "Brèche Dimensionnelle Ultime")
-Djbd    =  Kind.create(name: "Boss Ultime")
+Djbu    =  Kind.create(name: "Boss Ultime")
 Djbus   =  Kind.create(name: "Boss Ultime à Score")
 
 puts "Create dungeons"
