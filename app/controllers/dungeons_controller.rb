@@ -17,6 +17,7 @@ class DungeonsController < ApplicationController
 
     def show
         @dungeon = Dungeon.find(params[:id])
+        @characters = Character.where("level >= #{@dungeon.modulation - 14}")
         @ranking_dungeon = @dungeon.rankings
         @total_coffres = 0
         @ranking_dungeon.each do |rank|

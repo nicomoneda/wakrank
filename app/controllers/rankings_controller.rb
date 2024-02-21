@@ -3,19 +3,25 @@ class RankingsController < ApplicationController
     end
 
     def new
+        @ranking = Ranking.new#(character_id: params[:character_id], dungeon_id: params[:dungeon_id])
+        puts "coucou"
     end
 
     def create
+        puts "on est dans le CREATE"
         @ranking = Ranking.new(ranking_params)
         @dungeon = Dungeon.find(params[:dungeon_id]) # Pas péren vu qu'id récup dans l'url
+        @character = Character.find(params[:character_id]) # Me gène ce truc là, choppe l'id à partir de l'url
         @ranking.dungeon = @dungeon
-        @ranking.character = Character.find(params[:character_id]) # Me gène ce truc là, choppe l'id à partir de l'url
+        @ranking.character = @character
+        puts @ranking
 
         if @ranking.save
-            # Redirect to character_list_dungeon
+            redirect_to dungeon_path(@dungeon)
         else
-            # render 'characters/show'
+            render 'dungeon/index'
         end
+        puts "FINI"
     end
 
     def edit
@@ -26,7 +32,7 @@ class RankingsController < ApplicationController
         @ranking = Ranking.find(params[:id])
         @ranking.update(ranking_params)
 
-        # Redirect to character_list_dungeon
+        redirect_to dungeon_path(@dungeon)
     end
 
     def destroy
@@ -34,10 +40,12 @@ class RankingsController < ApplicationController
         @ranking.destroy
 
         # No need redirect cause this method will probably be used only once a month. Could even be a job maybe
+        # redirect_to dungeon_path(@dungeon)
     end
 
     private
 
     def ranking_params
         params.require(:ranking).permit(:stasis, :rank)
+    end
 end

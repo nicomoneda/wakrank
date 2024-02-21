@@ -1,17 +1,19 @@
-<h1>Coucou, bienvenue dans l'index des donjons</h1>
-<table>
-    <tr>
-      <th>Nom du donjon</th>
-      <th>Modulation</th>
-      <th>Genre</th>
-      <th>Total coffres</th>
-    </tr>
-    <% @dungeons.each_with_index do |dungeon, index| %>
-        <tr>
-            <td><%= link_to dungeon.name, dungeon_path(dungeon) %></td>
-            <td><%= dungeon.modulation %></td>
-            <td><%= dungeon.kind.name %></td>
-            <td><%= @coffres[index] %></td>
-        </tr>
-    <% end %>
-</table>
+<h1 class="display-5 text-center fw-bold text-body-emphasis">Coucou, bienvenue dans l'index des donjons</h1>
+<div class="container text-center">
+    <div class="grid">
+        <div class="row row-cols-3">
+            <% @dungeons.each_with_index do |dungeon, index| %>
+                <%= link_to dungeon_path(dungeon) do %>
+                    <div class="col">
+                        <div class="row bg-secondary p-2 m-2 rounded-3">
+                            <div class="col-8"><%= dungeon.name %></div>
+                            <div class="col-4"><%= dungeon.modulation %></div>
+                            <div class="col-6">Coffres</div>
+                            <div class="col-6">Persos</div>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>

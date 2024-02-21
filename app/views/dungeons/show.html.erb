@@ -1,16 +1,23 @@
-<h1><%= @dungeon.name %></h1>
-<h3>Total des coffres :  <%= @total_coffres %></h3>
-<h3>Classement</h3>
-<table>
+<div class="container">
+  <div class="row row-cols-2">
+    <h1 class="col-8 display-5 fw-bold text-body-emphasis"><%= @dungeon.name %></h1>
+    <h3 class="col-4 display-7 fw-bold text-body-emphasis">Total des coffres :  <%= @total_coffres %></h3>
+  </div>
+  <h3>Classement</h3>
+  <table>
     <tr>
       <th>Nom du perso</th>
       <th>Stasis</th>
     </tr>
-    <% @ranking_dungeon.each do |rank| %>
-    <tr>
-        <td><%= rank.character.name %></td>
-        <td><%= rank.stasis %></td>
-    </tr>
+    <% @characters.each do |character| %>
+      <tr>
+        <td><%= character.name%></td>
+        <% if Ranking.where(dungeon: @dungeon, character:character).exists? %>
+          <td><%= character.rankings.where(dungeon: @dungeon).first.stasis %></td>
+        <% else %>
+          <td><%= link_to "+", new_ranking_path,  data: { turbo_frame: 'modal' } %></td>
+        <% end%>
+      </tr>
     <% end %>
-
-</table>
+  </table>
+</div>
