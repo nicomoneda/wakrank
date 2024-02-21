@@ -38,13 +38,13 @@ class CharactersController < ApplicationController
 
     def update
         @character.update(characters_params)
-        # Redirect to character show (redirect_to character_details_path(@character)) OR redirect to character list (and fu) (redirect_to characters_list)
+        redirect_to characters_path
     end
 
     def destroy
         @character.destroy
 
-        # Redirect to character list (redirect_to characters_list)
+        redirect_to characters_path
     end
 
     private

@@ -13,6 +13,7 @@
         <td><%= character.level %></td>
         <td><%= @recompenses[index] %></td>
         <td><%= link_to "Editer", edit_character_path(character), data: { turbo_frame: 'modal' } %></td>
+        <td><%= link_to "Supprimer", character_path(character), data: { turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer #{ character.name } ?" } %></td>
       </tr>
       <% end %>
   </table>
