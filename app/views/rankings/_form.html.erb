@@ -1,4 +1,5 @@
-<%= simple_form_for [@ranking] do |f| %>
+<%= simple_form_for [@dungeon, @ranking] do |f| %>
+    <%= f.input :character_id, collection: @noRankCharacters %>
     <%= f.input :stasis %>
-    <%= f.submit "Créer" %>
+    <%= f.button :submit, "Créer" %>
 <% end %>

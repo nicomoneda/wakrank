@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   resources :characters
-  resources :dungeons, only: [ :index, :show ]
-  resources :rankings, only: [ :new, :create, :edit, :update, :destroy ]
+  resources :dungeons, only: [ :index, :show ] do
+      resources :rankings, only: [ :create, :update, :destroy ]
+  end
 end

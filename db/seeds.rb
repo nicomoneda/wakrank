@@ -170,22 +170,3 @@ Dungeon.create(name: "Brèche de la Shukrute",                   modulation: 230
 Dungeon.create(name: "Donjon Steamers",                         modulation: 230, kind: d4s)     
 Dungeon.create(name: "Donjon Poisseux Abyssaux",                modulation: 230, kind: d3s)     
 puts "DJ230 done"
-
-
-# TO_DO
-# A SUPPRIMER UNE FOIS EN PROD
-puts "Create characters"
-
-Character.create(name: "Suedama", level: 153)
-Character.create(name: "Nico Moneda", level: 185)
-Character.create(name: "José Ynequaine", level: 154)
- 
-puts "Create rankings"
-Ranking.create(stasis: 4, character: Character.where(name: "Suedama").first, dungeon: Dungeon.where(name: "Chez la Mère Michou").first)
-Ranking.create(stasis: 4, character: Character.where(name: "Suedama").first, dungeon: Dungeon.where(name: "Jawdin de la Weine").first)
-Ranking.create(stasis: 3, character: Character.where(name: "Suedama").first, dungeon: Dungeon.where(name: "Le Glaglacier Cornu").first)
-Ranking.create(stasis: 7, character: Character.where(name: "Suedama").first, dungeon: Dungeon.where(name: "La Montagne Adezieu").first)
-Ranking.create(stasis: 2, character: Character.where(name: "Nico Moneda").first, dungeon: Dungeon.where(name: "Chez la Mère Michou").first)
-Ranking.create(stasis: 5, character: Character.where(name: "Nico Moneda").first, dungeon: Dungeon.where(name: "Le Glaglacier Cornu").first)
-Ranking.create(stasis: 3, character: Character.where(name: "Nico Moneda").first, dungeon: Dungeon.where(name: "Jawdin de la Weine").first)
-Ranking.create(stasis: 2, character: Character.where(name: "Nico Moneda").first, dungeon: Dungeon.where(name: "La Montagne Adezieu").first)

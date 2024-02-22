@@ -2,24 +2,26 @@ class RankingsController < ApplicationController
     def show
     end
 
-    def new
-        @ranking = Ranking.new#(character_id: params[:character_id], dungeon_id: params[:dungeon_id])
-        puts "coucou"
-    end
+    # def new
+    #     @ranking = Ranking.new#(character_id: params[:character_id], dungeon_id: params[:dungeon_id])
+    #     @dungeon = Dungeon.find(params[:dungeon_id])
+    #     puts "coucou"
+    # end
 
     def create
         puts "on est dans le CREATE"
         @ranking = Ranking.new(ranking_params)
         @dungeon = Dungeon.find(params[:dungeon_id]) # Pas péren vu qu'id récup dans l'url
-        @character = Character.find(params[:character_id]) # Me gène ce truc là, choppe l'id à partir de l'url
+        @character = Character.find(params[:ranking][:character_id]) # Me gène ce truc là, choppe l'id à partir de l'url
         @ranking.dungeon = @dungeon
         @ranking.character = @character
-        puts @ranking
+        puts @ranking.dungeon.name
+        puts @ranking.character.name
 
         if @ranking.save
             redirect_to dungeon_path(@dungeon)
         else
-            render 'dungeon/index'
+            redirect_to dungeon_path(@dungeon)
         end
         puts "FINI"
     end

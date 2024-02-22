@@ -3,19 +3,23 @@
     <h1 class="col-8 display-5 fw-bold text-body-emphasis"><%= @dungeon.name %></h1>
     <h3 class="col-4 display-7 fw-bold text-body-emphasis">Total des coffres :  <%= @total_coffres %></h3>
   </div>
+  <div data-controller="toggle" class="mt-5">
+    <button data-action="click->toggle#fire" class="btn btn-outline-primary">Nouveau Classement</button>
+    <div data-toggle-target="togglableElement" class="d-none">
+      <%= render partial: "rankings/form", locals: { ranking: @ranking, dungeon: @dungeon, noRankCharacters: @noRankCharacters } %>
+    </div>
+  </div>
   <h3>Classement</h3>
   <table>
     <tr>
       <th>Nom du perso</th>
       <th>Stasis</th>
     </tr>
-    <% @characters.each do |character| %>
+    <% @characters.each_with_index do |character, index| %>
       <tr>
         <td><%= character.name%></td>
         <% if Ranking.where(dungeon: @dungeon, character:character).exists? %>
           <td><%= character.rankings.where(dungeon: @dungeon).first.stasis %></td>
-        <% else %>
-          <td><%= link_to "+", new_ranking_path,  data: { turbo_frame: 'modal' } %></td>
         <% end%>
       </tr>
     <% end %>

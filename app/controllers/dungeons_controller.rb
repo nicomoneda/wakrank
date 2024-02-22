@@ -17,7 +17,13 @@ class DungeonsController < ApplicationController
 
     def show
         @dungeon = Dungeon.find(params[:id])
+        @ranking = Ranking.new
         @characters = Character.where("level >= #{@dungeon.modulation - 14}")
+        @noRankCharacters = []
+        @characters.each do |character|
+            Ranking.where(character: character, dungeon: @dungeon).exists? ? nil : @noRankCharacters << character
+        end
+        puts "Persos non classés : #{@noRankCharacters}"
         @ranking_dungeon = @dungeon.rankings
         @total_coffres = 0
         @ranking_dungeon.each do |rank|
