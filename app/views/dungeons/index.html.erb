@@ -3,13 +3,13 @@
     <div class="grid">
         <div class="row row-cols-3">
             <% @dungeons.each_with_index do |dungeon, index| %>
-                <%= link_to dungeon_path(dungeon) do %>
+                <%= link_to dungeon_path(dungeon), class: "link-light" do %>
                     <div class="col">
                         <div class="row bg-secondary p-2 m-2 rounded-3">
                             <div class="col-8"><%= dungeon.name %></div>
                             <div class="col-4"><%= dungeon.modulation %></div>
-                            <div class="col-6">Coffres</div>
-                            <div class="col-6">Persos</div>
+                            <div class="col-6">Coffres : <%= @coffres[index] %> </div>
+                            <div class="col-6"> <%= @rankedCharacters[index] %> / <%= @characters[index] %></div>
                         </div>
                     </div>
                 <% end %>
