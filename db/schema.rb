@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_13_174900) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_27_181102) do
+  create_table "character_classes", force: :cascade do |t|
+    t.string "name"
+    t.string "imgSrc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "character_class_id", null: false
+    t.index ["character_class_id"], name: "index_characters_on_character_class_id"
   end
 
   create_table "dungeons", force: :cascade do |t|
@@ -44,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_13_174900) do
     t.index ["dungeon_id"], name: "index_rankings_on_dungeon_id"
   end
 
+  add_foreign_key "characters", "character_classes"
   add_foreign_key "dungeons", "kinds"
   add_foreign_key "rankings", "characters"
   add_foreign_key "rankings", "dungeons"

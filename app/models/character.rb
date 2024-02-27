@@ -8,4 +8,6 @@ class Character < ApplicationRecord
     
     validates :level, numericality: { only_integer: true }
     validates :level, inclusion: { in: (1..230) }
+
+    belongs_to :character_class
 end
