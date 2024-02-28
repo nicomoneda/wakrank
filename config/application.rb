@@ -18,5 +18,9 @@ module Wakrank
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.assets.paths << Rails.root.join("app", "assets", "images", "bosses")
+    config.assets.paths << Rails.root.join("app", "assets", "images", "classes")
+    config.assets.paths << Rails.root.join("app", "assets", "images", "interface")
   end
 end
