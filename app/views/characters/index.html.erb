@@ -1,14 +1,16 @@
 <h1 class="display-5 text-center fw-bold text-body-emphasis">Coucou, bienvenue dans l'index des persos</h1>
 
 <div class="container">
-  <table class="table text-center">
+  <table class="table">
       <tr>
+        <th scope="col"></th>
         <th scope="col">Nom du perso</th>
         <th scope="col">Niveau</th>
         <th scope="col">Total coffres</th>
       </tr>
       <% @characters.each_with_index do |character, index| %>
-      <tr>
+      <tr class="align-middle">
+        <td class="d-flex justify-content-center"><%= image_tag character.character_class.imgSrc, height: 36 %> </td>
         <td><%= character.name %></td>
         <td><%= character.level %></td>
         <td><%= @recompenses[index] %></td>

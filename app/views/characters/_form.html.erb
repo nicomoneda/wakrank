@@ -1,5 +1,6 @@
 <%= simple_form_for [@character] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :level %>
+    <%= f.input :name, label: "Nom" %>
+    <%= f.input :level, label: "Niveau" %>
+    <%= f.input :character_class_id, label: "Classe", collection: @characterClasses %>
     <%= f.submit "Créer" %>
 <% end %>

@@ -1,6 +1,10 @@
 <%= turbo_frame_tag "modal" do %>
     <%= tag.div data: { controller: "turbo-modal" }, style: "padding: 30px;" do %>
-        <%= render "form", post: @character %>
+        <%= simple_form_for [@character] do |f| %>
+            <%= f.input :name, label: "Nom" %>
+            <%= f.input :level, label: "Niveau" %>
+            <%= f.submit "Créer" %>
+        <% end %>
         <%= button_tag "Annuler", data: { action: "turbo-modal#hideModal" }, type: "button", class: "rounded-lg py-3 px-5 bg-red-600 text-white" %>
     <% end %>
 <% end %>

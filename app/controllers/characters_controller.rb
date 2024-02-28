@@ -20,11 +20,18 @@ class CharactersController < ApplicationController
     end
 
     def new
+        @characterClasses = CharacterClass.all.order(name: :asc)
         @character = Character.new
     end
 
     def create
+        puts "ON EST ICI"
         @character = Character.new(characters_params)
+        @characterClass = CharacterClass.find(params[:character][:character_class_id])
+        puts @character.name
+        puts @character.level
+        puts @characterClass.name
+        @character.character_class = @characterClass
         if @character.save
             redirect_to characters_path
         else
