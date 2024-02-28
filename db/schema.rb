@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_27_181102) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_28_090938) do
   create_table "character_classes", force: :cascade do |t|
     t.string "name"
     t.string "imgSrc"
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_181102) do
     t.integer "kind_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "imgSrc"
     t.index ["kind_id"], name: "index_dungeons_on_kind_id"
   end
 
