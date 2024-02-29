@@ -6,7 +6,7 @@
   <div data-controller="toggle" class="mt-5">
     <button data-action="click->toggle#fire" class="btn btn-outline-primary">Nouveau Classement</button>
     <div data-toggle-target="togglableElement" class="d-none">
-      <%= render partial: "rankings/form", locals: { ranking: @ranking, dungeon: @dungeon, noRankCharacters: @noRankCharacters } %>
+      <%= render partial: "rankings/form", locals: { ranking: @ranking, dungeon: @dungeon, noRankCharacters: @noRankCharacters }, data: { turbo_frame: 'modal' } %>
     </div>
   </div>
   <h3>Classement</h3>
@@ -20,6 +20,9 @@
         <td><%= character.name%></td>
         <% if Ranking.where(dungeon: @dungeon, character:character).exists? %>
           <td><%= character.rankings.where(dungeon: @dungeon).first.stasis %></td>
+          <td>
+            <td><%= link_to "Editer", edit_ranking_path(character.rankings.where(dungeon: @dungeon).first), data: { turbo_frame: 'modal' } %></td>
+          </td>
         <% end%>
       </tr>
     <% end %>

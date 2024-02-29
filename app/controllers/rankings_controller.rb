@@ -2,11 +2,11 @@ class RankingsController < ApplicationController
     def show
     end
 
-    # def new
-    #     @ranking = Ranking.new#(character_id: params[:character_id], dungeon_id: params[:dungeon_id])
-    #     @dungeon = Dungeon.find(params[:dungeon_id])
-    #     puts "coucou"
-    # end
+    def new
+        @ranking = Ranking.new#(character_id: params[:character_id], dungeon_id: params[:dungeon_id])
+        @dungeon = Dungeon.find(params[:dungeon_id])
+        puts "coucou"
+    end
 
     def create
         puts "on est dans le CREATE"
@@ -28,6 +28,9 @@ class RankingsController < ApplicationController
 
     def edit
         @ranking = Ranking.find(params[:id])
+        puts @ranking
+        @dungeon = @ranking.dungeon
+        @character = @ranking.character
     end
     
     def update
