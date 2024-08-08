@@ -1,0 +1,79 @@
+.dungeon-card {
+    display: flex;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    height: 160px;
+}
+
+.dungeon-img {
+    filter: drop-shadow(0 0 0.5rem rgb(185, 250, 255));
+    align-content: center;
+    z-index: 2;
+}
+
+.dungeon-content {
+    flex: 1 1 auto !important;
+    padding: 0.5rem;
+    margin-left: -3rem;
+    z-index: 1;
+    //background-color: rgba(108,117,125, 1) !important;
+    background-image: linear-gradient(to right, rgba(54,138,157,1), rgba(36,111,136,1));
+    border-radius: 2rem;
+    border: 0.1rem solid;
+    border-color: rgba(79,182,191,1);
+}
+
+.dungeon-level {
+    background-image: url("interface/pictoLevel.png");
+    filter: drop-shadow(0 0 0.1rem black);
+    background-size: cover;
+    color: black;
+    width: 48px;
+    height: 48px;
+    position: relative;
+    top: -4rem;
+    right: -16rem;
+    z-index: 2;
+}
+
+.dungeon-level p {
+    margin: 0.65rem;
+    font-weight: bold;
+}
+
+.dungeon-text {
+    width: 85%;
+    height: 100%;
+    margin-left: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.dungeon-infos {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 0.5rem auto 0.5rem;
+    
+}
+
+.dungeon-name {
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    margin-left: -1.2rem;
+}
+
+.dungeon-level {
+    align-self: center;
+}
+
+.player-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 2rem;
+    margin-right: 0.5rem;
+}

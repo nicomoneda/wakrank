@@ -15,6 +15,10 @@
  */
 
 @import "bootstrap";
+
+// Dungeon CSS
+@import "components/dungeon_cards";
+
 #modal {
     position: absolute;
     z-index: 2;
@@ -24,4 +28,12 @@
     word-break: break-word;
     border-radius: 6px;
     background: #bad5ff;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
 }
