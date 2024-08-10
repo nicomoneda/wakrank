@@ -5,11 +5,9 @@ class RankingsController < ApplicationController
     def new
         @ranking = Ranking.new#(character_id: params[:character_id], dungeon_id: params[:dungeon_id])
         @dungeon = Dungeon.find(params[:dungeon_id])
-        puts "coucou"
     end
 
     def create
-        puts "on est dans le CREATE"
         @ranking = Ranking.new(ranking_params)
         @dungeon = Dungeon.find(params[:dungeon_id]) # Pas péren vu qu'id récup dans l'url
         @character = Character.find(params[:ranking][:character_id]) # Me gène ce truc là, choppe l'id à partir de l'url
@@ -18,12 +16,24 @@ class RankingsController < ApplicationController
         puts @ranking.dungeon.name
         puts @ranking.character.name
 
+        if (@dungeon.kind.name == "Brèche Dimensionnelle" || 
+            @dungeon.kind.name == "Brèche Dimensionnelle Ultime" || 
+            @dungeon.kind.name == "Boss Ultime à Score")
+            case @ranking.stasis
+            when 1
+                @ranking.stasis = 10
+            when 2..60
+                @ranking.stasis = 5
+            else
+                @ranking.stasis = 1
+            end
+        end
+
         if @ranking.save
             redirect_to dungeon_path(@dungeon)
         else
             redirect_to dungeon_path(@dungeon)
         end
-        puts "FINI"
     end
 
     def edit
@@ -34,10 +44,26 @@ class RankingsController < ApplicationController
     end
     
     def update
+        update_stasis = 0
+        
         @ranking = Ranking.find(params[:id])
         @ranking.update(ranking_params)
 
-        redirect_to dungeon_path(@dungeon)
+        if (@ranking.dungeon.kind.name == "Brèche Dimensionnelle" || 
+            @ranking.dungeon.kind.name == "Brèche Dimensionnelle Ultime" || 
+            @ranking.dungeon.kind.name == "Boss Ultime à Score")
+            case @ranking.stasis
+            when 1
+                update_stasis = 10
+            when 2..60
+                update_stasis = 5
+            else
+                update_stasis = 1
+            end
+            @ranking.update(:stasis => update_stasis)
+        end
+        
+        redirect_to dungeon_path(@ranking.dungeon)
     end
 
     def destroy

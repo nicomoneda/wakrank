@@ -4,6 +4,7 @@ class CharactersController < ApplicationController
     def index
         @characters = Character.all
         @recompenses = []
+        @total = 0
         # afficher coffres d'un perso
         @characters.each do |character|
             sum = 0
@@ -12,6 +13,7 @@ class CharactersController < ApplicationController
                 sum += ranking.stasis
             end
             @recompenses << sum
+            @total += sum
         end
     end
 

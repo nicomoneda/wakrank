@@ -1,6 +1,7 @@
 <h1 class="display-5 text-center fw-bold text-body-emphasis">Coucou, bienvenue dans l'index des persos</h1>
 
 <div class="container">
+  <h2>Nombre de coffres récupérés : <%= @total %> <%= image_tag 'interface/60625176_2.png', height: 48 %></h2>
   <table class="table">
       <tr>
         <th scope="col"></th>
@@ -13,7 +14,7 @@
         <td class="d-flex justify-content-center"><%= image_tag character.character_class.imgSrc, height: 36 %> </td>
         <td><%= character.name %></td>
         <td><%= character.level %></td>
-        <td><%= @recompenses[index] %></td>
+        <td><%= @recompenses[index] %> <%= image_tag 'interface/60625176_2.png', height: 36 %></td>
         <td><%= link_to "Editer", edit_character_path(character), data: { turbo_frame: 'modal' } %></td>
         <td><%= link_to "Supprimer", character_path(character), data: { turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer #{ character.name } ?" } %></td>
       </tr>
