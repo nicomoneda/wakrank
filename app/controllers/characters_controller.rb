@@ -3,18 +3,6 @@ class CharactersController < ApplicationController
     
     def index
         @characters = Character.all
-        @recompenses = []
-        @total = 0
-        # afficher coffres d'un perso
-        @characters.each do |character|
-            sum = 0
-            all_rankings = Ranking.where(character: character)
-            all_rankings.each do |ranking|
-                sum += ranking.stasis
-            end
-            @recompenses << sum
-            @total += sum
-        end
     end
 
     def show        
@@ -27,18 +15,19 @@ class CharactersController < ApplicationController
     end
 
     def create
-        puts "ON EST ICI"
         @character = Character.new(characters_params)
         @characterClass = CharacterClass.find(params[:character][:character_class_id])
-        puts @character.name
-        puts @character.level
-        puts @characterClass.name
         @character.character_class = @characterClass
-        if @character.save
-            redirect_to characters_path
-        else
-            render :new
+        respond_to do |format|
+            if @character.save
+                format.turbo_stream { render turbo_stream: turbo_stream.prepend('characters', partial: 'characters/character', locals: {character: @character}) }
+                # format.html { redirect_to post_url(@character), notice: "#{@character.name} was successfully created." }
+                # redirect_to characters_path
+            else
+                render :new
+            end
         end
+
     end
 
     def edit
@@ -46,8 +35,14 @@ class CharactersController < ApplicationController
     end
 
     def update
-        @character.update(characters_params)
-        redirect_to characters_path
+        respond_to do |format|
+            if @character.update(characters_params)
+                format.turbo_stream { render turbo_stream: turbo_stream.replace(@character, partial: "characters/character", locals: {character: @character}) }
+                format.html { redirect_to post_url(@character), notice: "#{@character.name} was successfully updated." }
+            # redirect_to characters_path
+            end
+        end
+
     end
 
     def destroy
@@ -63,6 +58,6 @@ class CharactersController < ApplicationController
     end
 
     def characters_params
-        params.require(:character).permit(:name, :level)
+        params.require(:character).permit(:name, :level, :character_class_id)
     end
 end

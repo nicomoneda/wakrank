@@ -4,12 +4,7 @@
     <h1 class="col-8 display-5 fw-bold text-body-emphasis"><%= @dungeon.name %></h1>
     <h3 class="col-4 display-7 fw-bold text-body-emphasis">Total des coffres :  <%= @total_coffres %></h3>
   </div>
-  <div data-controller="toggle" class="mt-5">
-    <button data-action="click->toggle#fire" class="btn btn-outline-primary">Nouveau Classement</button>
-    <div data-toggle-target="togglableElement" class="d-none">
-      <%= render partial: "rankings/form", locals: { ranking: @ranking, dungeon: @dungeon, noRankCharacters: @noRankCharacters }, data: { turbo_frame: 'modal' } %>
-    </div>
-  </div>
+  <%= link_to "Nouveau Classement", new_dungeon_ranking_path(@dungeon), data: { turbo_frame: 'modal' }, locals: {noRankCharacters: @noRankCharacters} %>
   <h3>Classement</h3>
   <table>
     <tr>

@@ -1,10 +1,5 @@
-<%= turbo_frame_tag "modal" do %>
-    <%= tag.div data: { controller: "turbo-modal" }, style: "padding: 30px;" do %>
-        <%= simple_form_for [@dungeon, @ranking] do |f| %>
-            <%= f.input :character_id, collection: @noRankCharacters %>
-            <%= f.input :stasis %>
-            <%= f.button :submit, "Créer" %>
-        <% end %>
-        <%= button_tag "Annuler", data: { action: "turbo-modal#hideModal" }, type: "button", class: "rounded-lg py-3 px-5 bg-red-600 text-white" %>
-    <% end %>
+<%= simple_form_for [@dungeon, @ranking] do |f| %>
+    <%= f.input :character_id, collection: @noRankCharacters %>
+    <%= f.input :stasis %>
+    <%= f.button :submit, "Créer" %>
 <% end %>

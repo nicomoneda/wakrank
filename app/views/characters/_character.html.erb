@@ -1,0 +1,7 @@
+<tr id="<%= dom_id character %>">
+    <td><%= image_tag character.character_class.imgSrc, height: 36 %></td>
+    <td><%= character.name %></td>
+    <td><%= character.level %></td>
+    <td><%= link_to "Editer", edit_character_path(character), data: { turbo_frame: 'modal' } %></td>
+    <td><%= link_to "Suprimer", character_path(character), data: { turbo_method: 'delete' } %></td>
+</tr>

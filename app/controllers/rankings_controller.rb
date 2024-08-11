@@ -3,8 +3,13 @@ class RankingsController < ApplicationController
     end
 
     def new
-        @ranking = Ranking.new#(character_id: params[:character_id], dungeon_id: params[:dungeon_id])
+        @ranking = Ranking.new #(character_id: params[:character_id], dungeon_id: params[:dungeon_id])
         @dungeon = Dungeon.find(params[:dungeon_id])
+        @characters = Character.where("level >= #{@dungeon.modulation - 14}")
+        @noRankCharacters = []
+        @characters.each do |character|
+            Ranking.where(character: character, dungeon: @dungeon).exists? ? nil : @noRankCharacters << character
+        end
     end
 
     def create
