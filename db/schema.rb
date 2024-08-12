@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_28_090938) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_12_102627) do
   create_table "character_classes", force: :cascade do |t|
     t.string "name"
     t.string "imgSrc"
@@ -24,7 +24,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_28_090938) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "character_class_id", null: false
+    t.integer "user_id", null: false
     t.index ["character_class_id"], name: "index_characters_on_character_class_id"
+    t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
   create_table "dungeons", force: :cascade do |t|
@@ -54,7 +56,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_28_090938) do
     t.index ["dungeon_id"], name: "index_rankings_on_dungeon_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "characters", "character_classes"
+  add_foreign_key "characters", "users"
   add_foreign_key "dungeons", "kinds"
   add_foreign_key "rankings", "characters"
   add_foreign_key "rankings", "dungeons"

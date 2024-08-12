@@ -76,3 +76,4 @@ group :test do
 end
 
 gem "view_component", "~> 3.13"
+gem "devise"
