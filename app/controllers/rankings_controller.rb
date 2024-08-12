@@ -79,6 +79,13 @@ class RankingsController < ApplicationController
         # redirect_to dungeon_path(@dungeon)
     end
 
+    # TEMPORAIRE #
+    def destroy_all
+        Ranking.destroy_all
+        redirect_to dungeons_path
+    end
+    # FIN TEMPORAIRE #
+
     private
 
     def ranking_params

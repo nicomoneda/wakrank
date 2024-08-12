@@ -1,5 +1,10 @@
-<h1 class="display-5 text-center fw-bold text-body-emphasis">Coucou, bienvenue dans l'index des donjons</h1>
 <div class="container text-center">
+    <h1 class="display-5 text-center fw-bold text-body-emphasis">Donjons</h1>
+    <%# TEMPORAIRE %>
+    <div class="text-center fw-bold text-body-emphasis">
+        <%= button_to "SUPPRIMER TOUS LES CLASSEMENTS", destroy_all_rankings_path, method: :delete %>
+    </div>
+    <%# FIN TEMPORAIRE %>
     <div class="grid">
         <div class="row row-cols-3">
             <% @dungeons.each_with_index do |dungeon, index| %>
