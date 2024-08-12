@@ -22,5 +22,7 @@ module Wakrank
     config.assets.paths << Rails.root.join("app", "assets", "images", "bosses")
     config.assets.paths << Rails.root.join("app", "assets", "images", "classes")
     config.assets.paths << Rails.root.join("app", "assets", "images", "interface")
+
+    config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   end
 end
