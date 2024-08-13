@@ -1,7 +1,5 @@
-puts "Destroy all data"
+puts "Destroy all data except users, characters and rankings"
 
-Ranking.destroy_all
-Character.destroy_all
 Dungeon.destroy_all
 Kind.destroy_all
 CharacterClass.destroy_all

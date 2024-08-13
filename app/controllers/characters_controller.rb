@@ -2,7 +2,7 @@ class CharactersController < ApplicationController
     before_action :set_character, only: [:show, :edit, :update, :destroy]
     
     def index
-        @characters = Character.all
+        @characters = Character.where(user_id: current_user.id)
     end
 
     def show        
@@ -18,6 +18,7 @@ class CharactersController < ApplicationController
         @character = Character.new(characters_params)
         @characterClass = CharacterClass.find(params[:character][:character_class_id])
         @character.character_class = @characterClass
+        @character.user_id = current_user.id
         respond_to do |format|
             if @character.save
                 format.turbo_stream { render turbo_stream: turbo_stream.prepend('characters', partial: 'characters/character', locals: {character: @character}) }

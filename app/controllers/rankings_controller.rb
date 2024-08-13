@@ -16,6 +16,7 @@ class RankingsController < ApplicationController
         @ranking = Ranking.new(ranking_params)
         @dungeon = Dungeon.find(params[:dungeon_id]) # Pas péren vu qu'id récup dans l'url
         @character = Character.find(params[:ranking][:character_id]) # Me gène ce truc là, choppe l'id à partir de l'url
+        @ranking.user_id = current_user.id
         @ranking.dungeon = @dungeon
         @ranking.character = @character
         puts @ranking.dungeon.name
@@ -81,7 +82,7 @@ class RankingsController < ApplicationController
 
     # TEMPORAIRE #
     def destroy_all
-        Ranking.destroy_all
+        Ranking.where(user_id: current_user.id).destroy_all
         redirect_to dungeons_path
     end
     # FIN TEMPORAIRE #
