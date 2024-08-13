@@ -37,7 +37,7 @@ class DungeonsController < ApplicationController
             Ranking.where(character: character, dungeon: @dungeon, user_id: current_user.id).exists? ? nil : @noRankCharacters << character
         end
 
-        @ranking_dungeon = @dungeon.rankings
+        @ranking_dungeon = Ranking.where(dungeon: @dungeon, user_id: current_user.id)
         @total_coffres = 0
         @ranking_dungeon.each do |rank|
             @total_coffres += rank.stasis
