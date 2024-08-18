@@ -302,9 +302,9 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap (~> 5.3.2)
-  capistrano (~> 3.17)
+  capistrano (~> 3.19, >= 3.19.1)
   capistrano-passenger (~> 0.2.0)
-  capistrano-rails (~> 1.6.3)
+  capistrano-rails (~> 1.6)
   capistrano-rbenv (~> 2.2)
   capybara
   debug
