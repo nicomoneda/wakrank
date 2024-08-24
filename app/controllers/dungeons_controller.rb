@@ -41,7 +41,7 @@ class DungeonsController < ApplicationController
 
             @coffres << all_ranking.sum(:stasis)
             @rankedCharacters << all_ranking.count 
-            @characters << totalCharacters
+            @allCharacters << totalCharacters.count
         end
 
 

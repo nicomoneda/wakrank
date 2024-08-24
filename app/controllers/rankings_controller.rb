@@ -59,7 +59,9 @@ class RankingsController < ApplicationController
         update_chest = 0
         
         @ranking = Ranking.find(params[:id])
-        character = Character.where(character: @ranking.character)
+        puts @ranking.dungeon.name
+        puts @ranking.character.name
+        character = @ranking.character
         # Get the total chests and remove the old stasis
         update_chest = character.total_chest - @ranking.stasis
 
