@@ -5,7 +5,7 @@ class RankingsController < ApplicationController
     def new
         @ranking = Ranking.new #(character_id: params[:character_id], dungeon_id: params[:dungeon_id])
         @dungeon = Dungeon.find(params[:dungeon_id])
-        @characters = Character.where("level >= #{@dungeon.modulation - 14}")
+        @characters = Character.where("level >= #{@dungeon.modulation - 14}").where(user_id: current_user.id)
         @noRankCharacters = []
         @characters.each do |character|
             Ranking.where(character: character, dungeon: @dungeon).exists? ? nil : @noRankCharacters << character

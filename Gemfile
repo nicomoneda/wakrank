@@ -66,6 +66,11 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "capistrano", "~> 3.19", ">= 3.19.1"
+  gem "capistrano-rails", "~> 1.6"
+  gem "capistrano-passenger", "~> 0.2.0"
+  gem "capistrano-rbenv", "~> 2.2"
 end
 
 group :test do
@@ -78,3 +83,7 @@ end
 gem "view_component", "~> 3.13"
 
 gem "devise", "~> 4.9"
+
+gem "ed25519", ">= 1.2", "< 2.0"
+
+gem "bcrypt_pbkdf", ">= 1.0", "< 2.0"

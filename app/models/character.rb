@@ -3,6 +3,7 @@ class Character < ApplicationRecord
     has_many :dungeons, through: :rankings
     
     validates :name, presence: true
+    validates :name, length: {minimum: 3, maximum: 25}
     validates :level, presence: true
     validates :level, numericality: true
     
