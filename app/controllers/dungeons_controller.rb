@@ -5,6 +5,30 @@ class DungeonsController < ApplicationController
         @coffres = []
         @allCharacters = []
         @rankedCharacters = []
+        rankedDungeons = []
+
+        if params[:name].present?
+            @dungeons = @dungeons.where("name LIKE ?", "%#{params[:name]}%")
+            # Solution avec des mots clefs "keyword" (à ajouter au model)
+            # @dungeons = @dungeons.where("name LIKE ? OR keywords LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%")
+        end
+        
+        if params[:min_level].present?
+            @dungeons = @dungeons.where("modulation >= ?", params[:min_level])
+        end
+        
+        if params[:max_level].present?
+            @dungeons = @dungeons.where("modulation <= ?", params[:max_level])
+        end
+
+        if params[:no_ranked] == '1'
+            @dungeons.each do |dungeon|
+                if Ranking.where(user_id: current_user.id).where(dungeon_id: dungeon.id).exists?
+                    rankedDungeons << dungeon
+                end
+            end
+            @dungeons -= rankedDungeons
+        end
 
         @dungeons.each do |dungeon|
 
@@ -17,14 +41,10 @@ class DungeonsController < ApplicationController
 
             @coffres << all_ranking.sum(:stasis)
             @rankedCharacters << all_ranking.count 
-            @allCharacters << totalCharacters.count
-            # @characters.each do |character|
-            #     Ranking.where(character: character, dungeon: dungeon).exists? ? nil : sumCharacters += 1 # EH OUI. On peut pas ++ dans Ruby L.U.L
-            # end
-            # @noRankCharacters << sumCharacters
-
-            # sumCoffres = 0
+            @characters << totalCharacters
         end
+
+
     end
 
     def show

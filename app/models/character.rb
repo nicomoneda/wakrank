@@ -11,4 +11,5 @@ class Character < ApplicationRecord
     validates :level, inclusion: { in: (1..230) }
 
     belongs_to :character_class
+    belongs_to :user
 end

@@ -19,6 +19,10 @@
 // Dungeon CSS
 @import "components/dungeon_cards";
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 #modal {
     position: absolute;
     z-index: 2;

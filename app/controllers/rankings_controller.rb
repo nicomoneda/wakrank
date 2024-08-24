@@ -19,8 +19,6 @@ class RankingsController < ApplicationController
         @ranking.user_id = current_user.id
         @ranking.dungeon = @dungeon
         @ranking.character = @character
-        puts @ranking.dungeon.name
-        puts @ranking.character.name
 
         if (@dungeon.kind.name == "Brèche Dimensionnelle" || 
             @dungeon.kind.name == "Brèche Dimensionnelle Ultime" || 
@@ -34,8 +32,15 @@ class RankingsController < ApplicationController
                 @ranking.stasis = 1
             end
         end
+        puts "TOTAL COFFRES DU PERSO"
+        puts @character.name
+        puts @character.total_chest
+        @character.total_chest = @character.total_chest + @ranking.stasis
+        puts "NOUVEAU TOTAL COFFRES"
+        puts @character.total_chest
 
         if @ranking.save
+            @character.save
             redirect_to dungeon_path(@dungeon)
         else
             redirect_to dungeon_path(@dungeon)
@@ -51,9 +56,17 @@ class RankingsController < ApplicationController
     
     def update
         update_stasis = 0
+        update_chest = 0
         
         @ranking = Ranking.find(params[:id])
+        character = Character.where(character: @ranking.character)
+        # Get the total chests and remove the old stasis
+        update_chest = character.total_chest - @ranking.stasis
+
         @ranking.update(ranking_params)
+
+        update_chest += @ranking.stasis
+        character.update(:total_chest => update_chest)
 
         if (@ranking.dungeon.kind.name == "Brèche Dimensionnelle" || 
             @ranking.dungeon.kind.name == "Brèche Dimensionnelle Ultime" || 
@@ -83,6 +96,11 @@ class RankingsController < ApplicationController
     # TEMPORAIRE #
     def destroy_all
         Ranking.where(user_id: current_user.id).destroy_all
+        characters = Character.where(user_id: current_user.id)
+        characters.each do |character|
+            character.update(:total_chest => 0)
+        end
+        
         redirect_to dungeons_path
     end
     # FIN TEMPORAIRE #
@@ -90,6 +108,6 @@ class RankingsController < ApplicationController
     private
 
     def ranking_params
-        params.require(:ranking).permit(:stasis, :rank)
+        params.require(:ranking).permit(:stasis, :rank, :character_id)
     end
 end
