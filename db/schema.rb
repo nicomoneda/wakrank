@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_12_165655) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_21_152224) do
   create_table "character_classes", force: :cascade do |t|
     t.string "name"
     t.string "imgSrc"
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_12_165655) do
     t.datetime "updated_at", null: false
     t.integer "character_class_id", null: false
     t.integer "user_id", null: false
+    t.integer "total_chest"
     t.index ["character_class_id"], name: "index_characters_on_character_class_id"
     t.index ["user_id"], name: "index_characters_on_user_id"
   end

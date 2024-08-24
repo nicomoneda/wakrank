@@ -127,13 +127,13 @@ Dungeon.create(name: "Donjon Enutrosor",                        modulation: 155,
 Dungeon.create(name: "Blopéra",                                 modulation: 155,    kind: d2s,  imgSrc: "bosses/195604780.w200h.png")     
 Dungeon.create(name: "Source du Mal",                           modulation: 155,    kind: d3s,  imgSrc: "bosses/1102905040.w200h.png")     
 Dungeon.create(name: "Brèche de Bonta",                         modulation: 155,    kind: dbd,  imgSrc: "interface/breche_classique.png")     
-Dungeon.create(name: "Pyramide de Tal Kasha",                   modulation: 155,    kind: dbu,  imgSrc: "interface/default_42_42.png")     
+Dungeon.create(name: "Pyramide de Tal Kasha",                   modulation: 155,    kind: dbu,  imgSrc: "bosses/109605000.w200h.png")     
 Dungeon.create(name: "Ruche-mère Sabléoptère",                  modulation: 155,    kind: d2s,  imgSrc: "bosses/1111905478.w200h.png")     
 Dungeon.create(name: "Château du Wa Wabbit",                    modulation: 155,    kind: d3j,  imgSrc: "bosses/155602582.w200h.png")     
 Dungeon.create(name: "Laboratoire de Womewo",                   modulation: 155,    kind: d3s,  imgSrc: "bosses/155202605.w200h.png")
 puts "DJ155 done"
 
-Dungeon.create(name: "Donjon Méka",                             modulation: 170,    kind: d2s,  imgSrc: "bosses/169303398.w200h.png")     
+Dungeon.create(name: "Fabrique Méka",                           modulation: 170,    kind: d2s,  imgSrc: "bosses/169303398.w200h.png")     
 Dungeon.create(name: "Donjon E-Bou",                            modulation: 170,    kind: d2s,  imgSrc: "bosses/169203399.w200h.png")     
 Dungeon.create(name: "Plateau des Hauts-Vents",                 modulation: 170,    kind: dbu,  imgSrc: "bosses/B_Vl02DWAAAnntn.png")     
 Dungeon.create(name: "Repaire de Kali",                         modulation: 170,    kind: d3j,  imgSrc: "bosses/187204217.w200h.png")     

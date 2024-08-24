@@ -11,9 +11,8 @@
   </head>
 
   <body>
-    <% unless current_page?(root_path) %>
-      <%= render 'shared/navbar' %>
-    <% end %>
+    <%= render 'shared/navbar' %>
+    <%= @total_price %>
     <%= turbo_frame_tag "modal" %>
     <%= yield %>
   </body>

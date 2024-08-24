@@ -19,6 +19,7 @@ class CharactersController < ApplicationController
         @characterClass = CharacterClass.find(params[:character][:character_class_id])
         @character.character_class = @characterClass
         @character.user_id = current_user.id
+        @character.total_chest = 0
         respond_to do |format|
             if @character.save
                 format.turbo_stream { render turbo_stream: turbo_stream.prepend('characters', partial: 'characters/character', locals: {character: @character}) }

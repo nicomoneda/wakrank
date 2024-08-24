@@ -5,6 +5,37 @@
         <%= button_to "SUPPRIMER TOUS LES CLASSEMENTS", destroy_all_rankings_path, method: :delete %>
     </div>
     <%# FIN TEMPORAIRE %>
+
+<div class="mt-3 d-flex justify-content-between w-100">
+    <%= form_with url: dungeons_path, method: :get, local: true, class: "row align-items-center" do %>
+        <div class="col-md-4 mb-2">
+            <%= text_field_tag :name, params[:name], placeholder: "Recherche", class: "form-control" %>
+        </div>
+        
+        <div class="col-md-2 mb-2">
+            <% min_levels = (6..216).step(15).to_a %>
+            <%= select_tag :min_level, options_for_select(min_levels.map { |n| [n, n] }, params[:min_level]), prompt: "Niveau Min", class: "form-control" %>
+        </div>
+        
+        <div class="col-md-2 mb-2">
+            <% max_levels = (20..230).step(15).to_a %>
+            <%= select_tag :max_level, options_for_select(max_levels.map { |n| [n, n] }, params[:max_level]), prompt: "Niveau Max", class: "form-control" %>
+        </div>
+
+        <div class="col-md-2 mb-2 d-flex align-items-center">
+            <%= check_box_tag :no_ranked, '1', params[:no_ranked] == '1', class: "form-check-input me-2" %>
+            <%= label_tag :no_ranked, "Non classé", class: "form-check-label" %>
+        </div>
+        
+        <div class="col-md-2 mb-2">
+            <%= submit_tag "Rechercher", class: "btn btn-primary btn-block" %>
+        </div>
+    <% end %>
+    <div class="col-md-1 mb-2">
+        <%= @total_chest %> <%= image_tag 'interface/60625176_2.png', alt: "Coffre", width: 32 %>
+    </div>    
+</div>
+
     <div class="grid">
         <div class="row row-cols-3">
             <% @dungeons.each_with_index do |dungeon, index| %>
