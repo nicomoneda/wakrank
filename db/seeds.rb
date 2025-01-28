@@ -1,18 +1,12 @@
-puts "Destroy all data except users, characters and rankings"
-
-Dungeon.destroy_all
-Kind.destroy_all
-CharacterClass.destroy_all
-
 puts "Create kinds"
 d2s    =  Kind.create(name: "Donjon 2 salles")
 d3s    =  Kind.create(name: "Donjon 3 salles")
 d4s    =  Kind.create(name: "Donjon 4 salles")
 d3j    =  Kind.create(name: "Donjon 3 Joueurs")
-dbd    =  Kind.create(name: "Brèche Dimensionnelle")
-dbdu   =  Kind.create(name: "Brèche Dimensionnelle Ultime")
+# dbd    =  Kind.create(name: "Brèche Dimensionnelle")
+# dbdu   =  Kind.create(name: "Brèche Dimensionnelle Ultime")
 dbu    =  Kind.create(name: "Boss Ultime")
-dbus   =  Kind.create(name: "Boss Ultime à Score")
+# dbus   =  Kind.create(name: "Boss Ultime à Score")
 
 puts "Create classes"
 CharacterClass.create(name: "Féca",         imgSrc: "classes/logo-feca.png")
@@ -44,7 +38,7 @@ puts "DJ20 done"
 Dungeon.create(name: "Donjon des Abraknes",                     modulation: 35,     kind: d3s,  imgSrc: "bosses/182804107.w200h.png")     
 Dungeon.create(name: "Le Caveau Relevé",                        modulation: 35,     kind: d3s,  imgSrc: "bosses/158102793.w200h.png")     
 Dungeon.create(name: "Piou Lahoupe",                            modulation: 35,     kind: d3s,  imgSrc: "bosses/101501187.w200h.png")     
-Dungeon.create(name: "Brèche de Tainéla",                       modulation: 35,     kind: dbd,  imgSrc: "interface/breche_classique.png")
+# Dungeon.create(name: "Brèche de Tainéla",                       modulation: 35,     kind: dbd,  imgSrc: "interface/breche_classique.png")
 puts "DJ35 done"
 
 Dungeon.create(name: "Le Papaturage Royal",                     modulation: 50,     kind: d3s,  imgSrc: "bosses/121802271.w200h.png")     
@@ -74,7 +68,7 @@ Dungeon.create(name: "Domaine du Petit Groin",                  modulation: 80, 
 Dungeon.create(name: "Palais du Tsu",                           modulation: 80,     kind: d3s,  imgSrc: "bosses/100601278.w200h.png")     
 Dungeon.create(name: "Donjon Mulou",                            modulation: 80,     kind: d4s,  imgSrc: "bosses/105501792.w200h.png")     
 Dungeon.create(name: "Donjon Arakne",                           modulation: 80,     kind: d3s,  imgSrc: "bosses/1103805107.w200h.png")
-Dungeon.create(name: "Brèche de Sufokia",                       modulation: 80,     kind: dbd,  imgSrc: "interface/breche_classique.png")
+# Dungeon.create(name: "Brèche de Sufokia",                       modulation: 80,     kind: dbd,  imgSrc: "interface/breche_classique.png")
 puts "DJ80 done"
 
 Dungeon.create(name: "Sliptorium",                              modulation: 95,     kind: d2s,  imgSrc: "bosses/138601786.w200h.png")     
@@ -108,8 +102,8 @@ Dungeon.create(name: "Fosse du Tourmenteur",                    modulation: 125,
 Dungeon.create(name: "Caverne Smarrante",                       modulation: 125,    kind: d3s,  imgSrc: "bosses/187704231.w200h.png")     
 Dungeon.create(name: "Donjon Flaqueux",                         modulation: 125,    kind: d2s,  imgSrc: "bosses/122602272.w200h.png")     
 Dungeon.create(name: "La Pichine",                              modulation: 125,    kind: d4s,  imgSrc: "bosses/131501696.w200h.png")
-Dungeon.create(name: "Brèche de Frigost",                       modulation: 125,    kind: dbdu, imgSrc: "interface/breche_ultime.png")
-Dungeon.create(name: "Brèche d'Amakna",                         modulation: 125,    kind: dbd,  imgSrc: "interface/breche_classique.png")
+# Dungeon.create(name: "Brèche d'Amakna",                         modulation: 125,    kind: dbd,  imgSrc: "interface/breche_classique.png")
+# Dungeon.create(name: "Brèche de Frigost",                       modulation: 125,    kind: dbdu, imgSrc: "interface/breche_ultime.png")
 puts "DJ125 done"
 
 Dungeon.create(name: "Sanctuaire de Mihmol",                    modulation: 140,    kind: d3j,  imgSrc: "bosses/127803048.w200h.png")     
@@ -126,7 +120,7 @@ Dungeon.create(name: "Donjon Srambad",                          modulation: 155,
 Dungeon.create(name: "Donjon Enutrosor",                        modulation: 155,    kind: d2s,  imgSrc: "bosses/163603094.w200h.png")     
 Dungeon.create(name: "Blopéra",                                 modulation: 155,    kind: d2s,  imgSrc: "bosses/195604780.w200h.png")     
 Dungeon.create(name: "Source du Mal",                           modulation: 155,    kind: d3s,  imgSrc: "bosses/1102905040.w200h.png")     
-Dungeon.create(name: "Brèche de Bonta",                         modulation: 155,    kind: dbd,  imgSrc: "interface/breche_classique.png")     
+# Dungeon.create(name: "Brèche de Bonta",                         modulation: 155,    kind: dbd,  imgSrc: "interface/breche_classique.png")     
 Dungeon.create(name: "Pyramide de Tal Kasha",                   modulation: 155,    kind: dbu,  imgSrc: "bosses/109605000.w200h.png")     
 Dungeon.create(name: "Ruche-mère Sabléoptère",                  modulation: 155,    kind: d2s,  imgSrc: "bosses/1111905478.w200h.png")     
 Dungeon.create(name: "Château du Wa Wabbit",                    modulation: 155,    kind: d3j,  imgSrc: "bosses/155602582.w200h.png")     
@@ -150,13 +144,13 @@ Dungeon.create(name: "Donjon des Kannibouls",                   modulation: 185,
 Dungeon.create(name: "Donjon des Tropikes",                     modulation: 185,    kind: d2s,  imgSrc: "bosses/179403865.w200h.png")     
 Dungeon.create(name: "Cité Interdite",                          modulation: 185,    kind: d3j,  imgSrc: "bosses/1103005046.w200h.png")     
 Dungeon.create(name: "Donjon Gerbouille",                       modulation: 185,    kind: d3s,  imgSrc: "bosses/1103905131.w200h.png")     
-Dungeon.create(name: "Brèche de Moon",                          modulation: 185,    kind: dbd,  imgSrc: "interface/breche_classique.png") 
+# Dungeon.create(name: "Brèche de Moon",                          modulation: 185,    kind: dbd,  imgSrc: "interface/breche_classique.png") 
 puts "DJ185 done"
 
 Dungeon.create(name: "Antre de Nogord L'Ezarélé",               modulation: 200,    kind: dbu,  imgSrc: "bosses/143603433.w200h.png")     
 Dungeon.create(name: "Tanière des Blérox",                      modulation: 200,    kind: d2s,  imgSrc: "bosses/186604318.w200h.png")     
 Dungeon.create(name: "Volcan Or'Hodruin",                       modulation: 200,    kind: d2s,  imgSrc: "bosses/190004327.w200h.png")     
-Dungeon.create(name: "Pointe du Mont Zinit",                    modulation: 200,    kind: dbus, imgSrc: "bosses/1300060.w200h.png")     
+# Dungeon.create(name: "Pointe du Mont Zinit",                    modulation: 200,    kind: dbus, imgSrc: "bosses/1300060.w200h.png")     
 Dungeon.create(name: "Sanctuaire des Dragoeufs",                modulation: 200,    kind: d3s,  imgSrc: "bosses/186704400.w200h.png")     
 Dungeon.create(name: "La Crête Givrée",                         modulation: 200,    kind: d2s,  imgSrc: "bosses/189004260.w200h.png")     
 Dungeon.create(name: "La Tour Minérale",                        modulation: 200,    kind: d3j,  imgSrc: "bosses/193804664.w200h.png")     
@@ -174,8 +168,8 @@ Dungeon.create(name: "Donjon Vandaliéné",                       modulation: 21
 Dungeon.create(name: "Donjon Plantigarde",                      modulation: 215,    kind: d2s,  imgSrc: "bosses/1106705241.w200h.png")     
 Dungeon.create(name: "Donjon Mansot",                           modulation: 215,    kind: d2s,  imgSrc: "bosses/1106805247.w200h.png")     
 Dungeon.create(name: "Donjon Carapatte",                        modulation: 215,    kind: d2s,  imgSrc: "bosses/1106605235.w200h.png")     
-Dungeon.create(name: "Brèche du Mont Zinit",                    modulation: 215,    kind: dbdu, imgSrc: "interface/breche_ultime.png")     
-Dungeon.create(name: "Brèche d'Osamosa",                        modulation: 215,    kind: dbd,  imgSrc: "interface/breche_classique.png") 
+# Dungeon.create(name: "Brèche du Mont Zinit",                    modulation: 215,    kind: dbdu, imgSrc: "interface/breche_ultime.png")     
+# Dungeon.create(name: "Brèche d'Osamosa",                        modulation: 215,    kind: dbd,  imgSrc: "interface/breche_classique.png") 
 puts "DJ215 done"
 
 Dungeon.create(name: "Donjon Phytomorphe",                      modulation: 230,    kind: d2s,  imgSrc: "bosses/1107305277.w200h.png")     
@@ -183,9 +177,9 @@ Dungeon.create(name: "Donjon Vidéant",                          modulation: 230
 Dungeon.create(name: "Donjon Démhorrible",                      modulation: 230,    kind: d2s,  imgSrc: "bosses/1107705289.w200h.png")     
 Dungeon.create(name: "Donjon Égaré ?",                          modulation: 230,    kind: d2s,  imgSrc: "bosses/1107905295.w200h.png")     
 Dungeon.create(name: "Donjon Ravageur",                         modulation: 230,    kind: d2s,  imgSrc: "bosses/1108105301.w200h.png")     
-Dungeon.create(name: "Palais de Rushu",                         modulation: 230,    kind: dbus, imgSrc: "bosses/1108305306.w200h.png")     
-Dungeon.create(name: "Brèche de la Shukrute",                   modulation: 230,    kind: dbd,  imgSrc: "interface/breche_classique.png")     
-Dungeon.create(name: "Brèche de la Shukrute",                   modulation: 230,    kind: dbdu, imgSrc: "interface/breche_ultime.png")     
+# Dungeon.create(name: "Palais de Rushu",                         modulation: 230,    kind: dbus, imgSrc: "bosses/1108305306.w200h.png")     
+# Dungeon.create(name: "Brèche de la Shukrute",                   modulation: 230,    kind: dbd,  imgSrc: "interface/breche_classique.png")     
+# Dungeon.create(name: "Brèche de la Shukrute",                   modulation: 230,    kind: dbdu, imgSrc: "interface/breche_ultime.png")     
 Dungeon.create(name: "Donjon Steamers",                         modulation: 230,    kind: d4s,  imgSrc: "bosses/1110605400.w200h.png")     
 Dungeon.create(name: "Donjon Poisseux Abyssaux",                modulation: 230,    kind: d3s,  imgSrc: "bosses/1110405394.w200h.png")     
 puts "DJ230 done"
